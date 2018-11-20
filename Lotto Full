@@ -284,6 +284,12 @@ tempList.sort(key=None, reverse=True)
 value = tempList[0]
 finalNum3 = (outNumS3.index(value))
 finalNum.append(finalNum3)
+
+
+############################################
+#####   PRINT and SAVE Final Numbers   #####
+############################################
+
 print ("\n",)
 print ("Your Numbers are: ", finalNum)
 
