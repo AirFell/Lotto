@@ -1,3 +1,13 @@
+import csv
+import urllib.request
+
+############################################
+#####   DOWNLOAD MOST RECENT NUMBERS   #####
+############################################
+
+urllib.request.urlretrieve("http://www.molottery.com/gameHistory.do?method=p3Printout&order=desc", "p3.csv")
+
+
 ######################################
 #####   Conditional Statements   #####
 ######################################
@@ -9,8 +19,6 @@ drawMultiplier = int(22)
 #####   OPEN CSV FILE   #####
 #############################
 
-import csv
-
 DrawSet = []
 tmpList = []
 
@@ -18,7 +26,6 @@ with open('p3.csv', 'r') as NumberFile:
     reader = csv.reader(NumberFile)
     DrawnNumbers = list(reader)
     
-
 
 ###################################################
 #####   This is here to make testing easier   #####
