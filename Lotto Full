@@ -37,7 +37,6 @@ with open('p3.csv', 'r') as NumberFile:
 #print ("DrawnNumbers:", DrawnNumbers) 
 
 
-
 ###############################
 #####   Create Draw Set   #####
 ###############################
@@ -296,3 +295,11 @@ print ("Your Numbers are: ", finalNum)
 WinningNumbers = open("WinningNumbers.txt","w")
 WinningNumbers.write(str(finalNum))
 WinningNumbers.close()
+
+
+
+################################
+#####   SEND SMS MESSAGE   #####
+################################
+
+#stuff
