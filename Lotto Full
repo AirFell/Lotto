@@ -5,7 +5,7 @@ import urllib.request
 #####   DOWNLOAD MOST RECENT NUMBERS   #####
 ############################################
 
-urllib.request.urlretrieve("http://www.molottery.com/gameHistory.do?method=p3Printout&order=desc", "p3.csv")
+#urllib.request.urlretrieve("http://www.molottery.com/gameHistory.do?method=p3Printout&order=desc", "p3.csv")
 
 
 ######################################
@@ -26,6 +26,7 @@ with open('p3.csv', 'r') as NumberFile:
     reader = csv.reader(NumberFile)
     DrawnNumbers = list(reader)
     
+
 
 ###################################################
 #####   This is here to make testing easier   #####
@@ -285,3 +286,7 @@ finalNum3 = (outNumS3.index(value))
 finalNum.append(finalNum3)
 print ("\n",)
 print ("Your Numbers are: ", finalNum)
+
+WinningNumbers = open("WinningNumbers.txt","w")
+WinningNumbers.write(str(finalNum))
+WinningNumbers.close()
