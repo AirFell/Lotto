@@ -1,0 +1,4 @@
+The goal is to completely automate it to pull data from the MoLotto website, run some statistics, then send a text to my cell with the winning numbers to go buy a ticket.
+
+Worth looking into:
+https://www.twilio.com/docs/sms/quickstart/python
