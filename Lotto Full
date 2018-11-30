@@ -41,6 +41,11 @@ with open('p3.csv', 'r') as NumberFile:
 #print ("DrawnNumbers:", DrawnNumbers) 
 
 
+
+
+# START METHOD 1   #############################################
+# Each number per slot
+
 ###############################
 #####   Create Draw Set   #####
 ###############################
@@ -69,10 +74,12 @@ for entry in DrawnNumbers:
 CDS1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 CDS2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 CDS3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+CDaverage = [0,0,0]
 
 RDS1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 RDS2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 RDS3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+RDaverage = [0,0,0]
 
 
 ################################
@@ -300,10 +307,9 @@ WinningNumbers = open("WinningNumbers.txt","w")
 WinningNumbers.write(str(finalNum))
 WinningNumbers.close()
 
+#need to print average
 
+#########################   END METHOD 1   #####################
+#########################   START METHOD 2   #####################
+# 000-999 AS A WHOLE
 
-################################
-#####   SEND SMS MESSAGE   #####
-################################
-
-#stuff
