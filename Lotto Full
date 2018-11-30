@@ -1,3 +1,6 @@
+#made with Python 3.7.1
+#by AirFell
+
 import csv
 import urllib.request
 
@@ -12,8 +15,8 @@ import urllib.request
 #####   Conditional Statements   #####
 ######################################
 
-drawRange = int(30 * 2)
-drawMultiplier = int(22)
+drawRange = int(input("Enter recent draw history time range in days:") * 2)
+drawMultiplier = int(input("Enter strenth of recent draw history against all history:"))
 
 #############################
 #####   OPEN CSV FILE   #####
