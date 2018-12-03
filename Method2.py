@@ -19,7 +19,7 @@ import urllib.request
 #####   DOWNLOAD MOST RECENT NUMBERS   #####
 ############################################
 
-urllib.request.urlretrieve("http://www.molottery.com/gameHistory.do?method=p3Printout&order=desc", "p3.csv")
+#urllib.request.urlretrieve("http://www.molottery.com/gameHistory.do?method=p3Printout&order=desc", "p3.csv")
 
 
 ######################################
@@ -86,49 +86,33 @@ cds1Count = int(1000)
 while cds1Count > 0:
     CDS1.append(int(0))
     cds1Count = cds1Count - 1
-print (len(CDS1))
+#print (len(CDS1))
 
 RDS1 = []
-rds1Count= int(1000)
+rds1Count = int(1000)
 while rds1Count > 0:
     RDS1.append(int(0))
     rds1Count = rds1Count - 1
-print (len(RDS1))
+#print (len(RDS1))
 
-#stopped here, we now have each entry as an individual 3 digit number.
-#need to next figure out how to iterativly compare each number to the list and
-#count one when they match.
+#stopped here, need to resume with adjusting out the commas to make each
+#line its own three-digit number without commas.
 
 ################################
 #####  LONG TERM COUNTER   #####
 ################################
 
 #####~~~SERIES 1~~~#####
-for list in DrawSet:
-    dn = list[0]
-    if dn == 0:
-        CDS1[0] = CDS1[0] + 1
-    elif dn == 1:
-        CDS1[1] = CDS1[1] + 1
-    elif dn == 2:
-        CDS1[2] = CDS1[2] + 1
-    elif dn == 3:
-        CDS1[3] = CDS1[3] + 1
-    elif dn == 4:
-        CDS1[4] = CDS1[4] + 1
-    elif dn == 5:
-        CDS1[5] = CDS1[5] + 1
-    elif dn == 6:
-        CDS1[6] = CDS1[6] + 1
-    elif dn == 7:
-        CDS1[7] = CDS1[7] + 1
-    elif dn == 8:
-        CDS1[8] = CDS1[8] + 1
-    elif dn == 9:
-        CDS1[9] = CDS1[9] + 1
-#print ("Output CDS1", CDS1)
 
-print ("\n")
+for z in range(1000):
+#    print ("z:", z)
+    for list in DrawSet:
+        dn = list[0]
+        if int(dn) == z:
+            CDS1[z] = CDS1[z] + 1
+        
+#print ("Output CDS1", CDS1)
+#print ("\n")
 
 ##################################
 #####   SHORT TERM COUNTER   #####
@@ -147,31 +131,16 @@ del DrawSet[drawRange:x]
 
 
 #####~~~SERIES 1~~~#####
-for list in DrawSet:
-    dn = list[0]
-    if dn == 0:
-        RDS1[0] = RDS1[0] + drawMultiplier
-    elif dn == 1:
-        RDS1[1] = RDS1[1] + drawMultiplier
-    elif dn == 2:
-        RDS1[2] = RDS1[2] + drawMultiplier
-    elif dn == 3:
-        RDS1[3] = RDS1[3] + drawMultiplier
-    elif dn == 4:
-        RDS1[4] = RDS1[4] + drawMultiplier
-    elif dn == 5:
-        RDS1[5] = RDS1[5] + drawMultiplier
-    elif dn == 6:
-        RDS1[6] = RDS1[6] + drawMultiplier
-    elif dn == 7:
-        RDS1[7] = RDS1[7] + drawMultiplier
-    elif dn == 8:
-        RDS1[8] = RDS1[8] + drawMultiplier
-    elif dn == 9:
-        RDS1[9] = RDS1[9] + drawMultiplier
-#print ("Output RDS1", RDS1)
 
-print ("\n")
+for y in range(1000):
+#    print ("y:", y)
+    for list in DrawSet:
+        dn = list[0]
+        if int(dn) == y:
+            RDS1[y] = RDS1[y] + 1
+
+#print ("Output RDS1", RDS1)
+#print ("\n")
 
 ################################
 #####   SUBTRACT NUMBERS   #####
@@ -197,7 +166,7 @@ finalNum.append(finalNum1)
 #####   PRINT and SAVE Final Numbers   #####
 ############################################
 
-print ("\n",)
+#print ("\n",)
 print ("Your Numbers are: ", finalNum)
 
 WinningNumbers = open("WinningNumbers.txt","w")
