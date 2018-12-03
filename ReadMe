@@ -1,4 +1,6 @@
-The goal is to completely automate it to pull data from the MoLotto website, run some statistics, then send a text to my cell with the winning numbers to go buy a ticket.
+EDIT: Whole thing has been rethought.
 
-Worth looking into:
-https://www.twilio.com/docs/sms/quickstart/python
+Goal is now to make an app for each state for each lotto that we can get their history on and let users decide what method they want to run their own statistics. App will send them a notification with numbers to choose and what numbers won.
+
+
+Eventually it would be cool for the apps to notify us when someone wins and what settings they had to see if one method is more successful than another.
