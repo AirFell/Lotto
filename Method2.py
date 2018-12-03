@@ -56,13 +56,18 @@ with open('p3.csv', 'r') as NumberFile:
 ###############################
 
 for entry in DrawnNumbers:
+#    print ("Entry:", entry[2:5])
     if entry[2].isnumeric():
         tmpList.clear()
+        threeDigit = str()
         counter = 0
         for elem in entry[2:5]:
-            tmpList.append(int(elem))
+            threeDigit = threeDigit + str(elem)
+#            print ("3 Digit:", threeDigit)
             counter = counter + 1
             if counter == 3:
+                tmpList.append(int(threeDigit))
+#                print ("tmpList:", tmpList)
                 DrawSet.append(tmpList.copy())
     else:
         pass
