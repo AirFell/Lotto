@@ -95,8 +95,9 @@ while rds1Count > 0:
     rds1Count = rds1Count - 1
 print (len(RDS1))
 
-#stopped here, need to resume with adjusting out the commas to make each
-#line its own three-digit number without commas.
+#stopped here, we now have each entry as an individual 3 digit number.
+#need to next figure out how to iterativly compare each number to the list and
+#count one when they match.
 
 ################################
 #####  LONG TERM COUNTER   #####
