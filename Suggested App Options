@@ -1,0 +1,13 @@
+Pre-Draw Notification w/numbers (y/n)
+Pre-Draw Notification time/s? (user input)
+
+Method 1:
+  Weighted draw range time (user input)
+  Draw range strength (multiplier) (user input)
+  auto balance? (y/n) - this is a new possible feature I'm working on that balances the range time to all time better to give you an average. Not sure of the impact.
+  
+Method 2:
+  Weighted draw range time (user input)
+  auto balance? (y/n)
+  
+Method 3:
