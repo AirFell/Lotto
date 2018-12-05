@@ -23,16 +23,8 @@ import urllib.request
 #####   DOWNLOAD MOST RECENT NUMBERS   #####
 ############################################
 
-urllib.request.urlretrieve("http://www.molottery.com/gameHistory.do?method=p3Printout&order=desc", "p3.csv")
+#urllib.request.urlretrieve("http://www.molottery.com/gameHistory.do?method=p3Printout&order=desc", "p3.csv")
 
-
-######################################
-#####   Conditional Statements   #####
-######################################
-
-drawRange = int(input("Enter recent draw history time range in days:") * 2)
-drawMultiplier = int(input("Enter strenth of recent draw history against all history:"))
-#30 days at 22x recommended.
 
 #############################
 #####   OPEN CSV FILE   #####
@@ -44,14 +36,30 @@ tmpList = []
 with open('p3.csv', 'r') as NumberFile:
     reader = csv.reader(NumberFile)
     DrawnNumbers = list(reader)
-    
+
+#################################################
+#####   Conditional Statements/User Input   #####
+#################################################
+
+u = len(DrawnNumbers)
+#print (len(DrawnNumbers))
+
+drawRange = int(input("Enter recent draw history time range in days:") * 2)
+t = "true"
+while t == "true":
+    dMO = str(input("Auto-balance draw range to all history? y/n:"))
+    if dMO in ["Yes", "yes", "Y", "y"]:
+        t = "false"
+        drawMultiplier = u - drawRange
+    elif dMO in ["No", "no", "N", "n"]:
+        t = "false"
+        drawMultiplier = int(input("Enter strenth of recent draw history against all history:"))
+    else:
+        t = "true"
+        print ("Please enter a Y or N")
 
 
-###################################################
-#####   This is here to make testing easier   #####
-###################################################
-
-#x = len(DrawnNumbers)
+#testing junk
 #del DrawnNumbers[14:x]
 #print ("DrawnNumbers:", DrawnNumbers) 
 
