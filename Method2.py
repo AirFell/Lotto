@@ -27,8 +27,10 @@ import urllib.request
 ######################################
 
 drawRange = int(input("Enter recent draw history time range in days:") * 2)
+#30 days recommended.
+
 drawMultiplier = int(input("Enter strenth of recent draw history against all history:"))
-#30 days at 22x recommended.
+#Multiplier not needed for this method.
 
 #############################
 #####   OPEN CSV FILE   #####
