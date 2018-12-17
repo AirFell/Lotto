@@ -23,7 +23,7 @@ import urllib.request
 #####   DOWNLOAD MOST RECENT NUMBERS   #####
 ############################################
 
-#urllib.request.urlretrieve("http://www.molottery.com/gameHistory.do?method=p3Printout&order=desc", "p3.csv")
+urllib.request.urlretrieve("http://www.molottery.com/gameHistory.do?method=p3Printout&order=desc", "p3.csv")
 
 
 #############################
@@ -41,10 +41,12 @@ with open('p3.csv', 'r') as NumberFile:
 #####   Conditional Statements/User Input   #####
 #################################################
 
-u = len(DrawnNumbers) - 1
+u = len(DrawnNumbers)
 #print (len(DrawnNumbers))
 
 drawRange = int(30 * 2)
+
+#drawMultiplier = 22
 drawMultiplier = u - drawRange
 
 #testing junk
@@ -176,11 +178,13 @@ for list in DrawSet:
 #- Reduce DrawSet down to only the most recent x draws.
 #- 2, same process as long term counter, but add a loop to subtract 1 from all
 #print ("DrawSet TEST 1:", DrawSet)
-DrawSet.reverse()
+#DrawSet.reverse()
 #print ("DrawSet TEST 2:", DrawSet)
 x = len(DrawSet)
 del DrawSet[drawRange:x]
 #print ("DrawSet TEST 3:", DrawSet)
+yesterDrawNum = DrawSet[0].copy()
+#print (yesterDrawNum)
 
 
 #####~~~SERIES 1~~~#####
@@ -277,6 +281,7 @@ outNumS3 = [a - b for a, b in zip(CDS3, RDS3)]
 #############################
 #####   SELECT WEIGHT   #####
 #############################
+
 finalNum = []
 
 tempList = outNumS1.copy()
@@ -304,9 +309,20 @@ finalNum.append(finalNum3)
 #####   PRINT and SAVE Final Numbers   #####
 ############################################
 
-#print ("\n",)
-print ("Your Numbers are: ", finalNum)
+#winNum = open("WinningNumbers.txt","r")
+#yesterScriptNum = winNum.readlines()[1]
+#print ("yesterday's script numbers", yesterScriptNum)
+#winNum.close()
+
+print ("Yesterday's winning numbers were: ", yesterDrawNum)
+#print ("Yesterday's selected numbers were: ", yesterScriptNum)
+#print ("This program has been correct", "X", "times.")
+print ("Today's selected Numbers are: ", finalNum)
 
 WinningNumbers = open("WinningNumbers.txt","w")
+WinningNumbers.write(str(yesterDrawNum))
+WinningNumbers.write("\n")
+#WinningNumbers.write(str(yesterScriptNum))
+#WinningNumbers.write(str(winCount))
 WinningNumbers.write(str(finalNum))
 WinningNumbers.close()
