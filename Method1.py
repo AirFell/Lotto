@@ -15,7 +15,6 @@
 #   and subtracted to the entire history
 #   tally for each draw per slot, per number.
 
-
 import csv
 import urllib.request
 
@@ -23,8 +22,7 @@ import urllib.request
 #####   DOWNLOAD MOST RECENT NUMBERS   #####
 ############################################
 
-#urllib.request.urlretrieve("http://www.molottery.com/gameHistory.do?method=p3Printout&order=desc", "p3.csv")
-
+urllib.request.urlretrieve("http://www.molottery.com/gameHistory.do?method=p3Printout&order=desc", "p3.csv")
 
 #############################
 #####   OPEN CSV FILE   #####
@@ -58,12 +56,6 @@ while t == "true":
         t = "true"
         print ("Please enter a Y or N")
 
-
-#testing junk
-#del DrawnNumbers[14:x]
-#print ("DrawnNumbers:", DrawnNumbers) 
-
-
 ###############################
 #####   Create Draw Set   #####
 ###############################
@@ -80,11 +72,6 @@ for entry in DrawnNumbers:
     else:
         pass
 
-#print ("\n")
-#print ("DrawSet:", DrawSet)
-#print ("\n")
-
-
 ##############################
 #####   GENERATE LISTS   #####
 ##############################
@@ -96,7 +83,6 @@ CDS3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 RDS1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 RDS2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 RDS3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
 
 ################################
 #####  LONG TERM COUNTER   #####
@@ -177,23 +163,16 @@ for list in DrawSet:
         CDS3[9] = CDS3[9] + 1
 print ("Output CDS3", CDS3)
 
-
 print ("\n")
 
 ##################################
 #####   SHORT TERM COUNTER   #####
 ##################################
 
-
 #- Reduce DrawSet down to only the most recent x draws.
 #- 2, same process as long term counter, but add a loop to subtract 1 from all
-#print ("DrawSet TEST 1:", DrawSet)
-DrawSet.reverse()
-#print ("DrawSet TEST 2:", DrawSet)
 x = len(DrawSet)
 del DrawSet[drawRange:x]
-#print ("DrawSet TEST 3:", DrawSet)
-
 
 #####~~~SERIES 1~~~#####
 for list in DrawSet:
@@ -270,7 +249,6 @@ for list in DrawSet:
         RDS3[9] = RDS3[9] + drawMultiplier
 print ("Output RDS3", RDS3)
 
-
 print ("\n")
 
 ################################
@@ -296,21 +274,18 @@ tempList.sort(key=None, reverse=True)
 value = tempList[0]
 finalNum1 = (outNumS1.index(value))
 finalNum.append(finalNum1)
-#print (finalNum)
 
 tempList = outNumS2.copy()
 tempList.sort(key=None, reverse=True)
 value = tempList[0]
 finalNum2 = (outNumS2.index(value))
 finalNum.append(finalNum2)
-#print (finalNum)
 
 tempList = outNumS3.copy()
 tempList.sort(key=None, reverse=True)
 value = tempList[0]
 finalNum3 = (outNumS3.index(value))
 finalNum.append(finalNum3)
-
 
 ############################################
 #####   PRINT and SAVE Final Numbers   #####
