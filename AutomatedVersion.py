@@ -18,6 +18,8 @@
 
 import csv
 import urllib.request
+import os
+import datetime
 
 ############################################
 #####   DOWNLOAD MOST RECENT NUMBERS   #####
@@ -42,16 +44,8 @@ with open('p3.csv', 'r') as NumberFile:
 #################################################
 
 u = len(DrawnNumbers)
-#print (len(DrawnNumbers))
-
 drawRange = int(30 * 2)
-
-#drawMultiplier = 22
 drawMultiplier = u - drawRange
-
-#testing junk
-#del DrawnNumbers[14:x]
-#print ("DrawnNumbers:", DrawnNumbers) 
 
 
 ###############################
@@ -68,11 +62,7 @@ for entry in DrawnNumbers:
             if counter == 3:
                 DrawSet.append(tmpList.copy())
     else:
-        pass
-
-#print ("\n")
-#print ("DrawSet:", DrawSet)
-#print ("\n")
+        pass;
 
 
 ##############################
@@ -115,7 +105,6 @@ for list in DrawSet:
         CDS1[8] = CDS1[8] + 1
     elif dn == 9:
         CDS1[9] = CDS1[9] + 1
-#print ("Output CDS1", CDS1)
 
 #####~~~SERIES 2~~~#####
 for list in DrawSet:
@@ -140,7 +129,6 @@ for list in DrawSet:
         CDS2[8] = CDS2[8] + 1
     elif dn == 9:
         CDS2[9] = CDS2[9] + 1
-#print ("Output CDS2", CDS2)
 
 #####~~~SERIES 3~~~#####
 for list in DrawSet:
@@ -165,10 +153,6 @@ for list in DrawSet:
         CDS3[8] = CDS3[8] + 1
     elif dn == 9:
         CDS3[9] = CDS3[9] + 1
-#print ("Output CDS3", CDS3)
-
-
-#print ("\n")
 
 ##################################
 #####   SHORT TERM COUNTER   #####
@@ -176,15 +160,9 @@ for list in DrawSet:
 
 
 #- Reduce DrawSet down to only the most recent x draws.
-#- 2, same process as long term counter, but add a loop to subtract 1 from all
-#print ("DrawSet TEST 1:", DrawSet)
-#DrawSet.reverse()
-#print ("DrawSet TEST 2:", DrawSet)
 x = len(DrawSet)
 del DrawSet[drawRange:x]
-#print ("DrawSet TEST 3:", DrawSet)
-yesterDrawNum = DrawSet[0].copy()
-#print (yesterDrawNum)
+previousDrawNum = DrawSet[0].copy()
 
 
 #####~~~SERIES 1~~~#####
@@ -210,7 +188,6 @@ for list in DrawSet:
         RDS1[8] = RDS1[8] + drawMultiplier
     elif dn == 9:
         RDS1[9] = RDS1[9] + drawMultiplier
-#print ("Output RDS1", RDS1)
 
 #####~~~SERIES 2~~~#####
 for list in DrawSet:
@@ -235,7 +212,6 @@ for list in DrawSet:
         RDS2[8] = RDS2[8] + drawMultiplier
     elif dn == 9:
         RDS2[9] = RDS2[9] + drawMultiplier
-#print ("Output RDS2", RDS2)
 
 #####~~~SERIES 3~~~#####
 for list in DrawSet:
@@ -260,23 +236,14 @@ for list in DrawSet:
         RDS3[8] = RDS3[8] + drawMultiplier
     elif dn == 9:
         RDS3[9] = RDS3[9] + drawMultiplier
-#print ("Output RDS3", RDS3)
-
-
-#print ("\n")
-
+        
 ################################
 #####   SUBTRACT NUMBERS   #####
 ################################
 
 outNumS1 = [a - b for a, b in zip(CDS1, RDS1)]
-#print ("Set 1 Weighted:", outNumS1)
-
 outNumS2 = [a - b for a, b in zip(CDS2, RDS2)]
-#print ("Set 2 Weighted:", outNumS2)
-
 outNumS3 = [a - b for a, b in zip(CDS3, RDS3)]
-#print ("Set 3 Weighted:", outNumS3)
 
 #############################
 #####   SELECT WEIGHT   #####
@@ -289,14 +256,12 @@ tempList.sort(key=None, reverse=True)
 value = tempList[0]
 finalNum1 = (outNumS1.index(value))
 finalNum.append(finalNum1)
-#print (finalNum)
 
 tempList = outNumS2.copy()
 tempList.sort(key=None, reverse=True)
 value = tempList[0]
 finalNum2 = (outNumS2.index(value))
 finalNum.append(finalNum2)
-#print (finalNum)
 
 tempList = outNumS3.copy()
 tempList.sort(key=None, reverse=True)
@@ -309,20 +274,32 @@ finalNum.append(finalNum3)
 #####   PRINT and SAVE Final Numbers   #####
 ############################################
 
-#winNum = open("WinningNumbers.txt","r")
-#yesterScriptNum = winNum.readlines()[1]
-#print ("yesterday's script numbers", yesterScriptNum)
-#winNum.close()
 
-print ("Yesterday's winning numbers were: ", yesterDrawNum)
-#print ("Yesterday's selected numbers were: ", yesterScriptNum)
-#print ("This program has been correct", "X", "times.")
-print ("Today's selected Numbers are: ", finalNum)
+todayDateLabel = datetime.date.today()
+yesterDateLabel = todayDateLabel - datetime.timedelta(days = 1)
+#dayHalf = midday
+#dayHalf = evening
 
-WinningNumbers = open("WinningNumbers.txt","w")
-WinningNumbers.write(str(yesterDrawNum))
-WinningNumbers.write("\n")
-#WinningNumbers.write(str(yesterScriptNum))
-#WinningNumbers.write(str(winCount))
+#oldWinningNumbers = open(f"WinningNumbers_{yesterDateLabel}_{dayHalf}.txt","r")
+oldWinningNumbers = open(f"WinningNumbers_{yesterDateLabel}.txt","r")
+oldNumbers = oldWinningNumbers.readlines()[7]
+oldWinningNumbers.close()
+
+#WinningNumbers = open(f"WinningNumbers_{todayDateLabel}_{dayHalf}.txt","w")
+WinningNumbers = open(f"WinningNumbers_{todayDateLabel}.txt","w")
+WinningNumbers.write(str("Previous Winning Numbers:"))
+WinningNumbers.write(str("\n"))
+WinningNumbers.write(str(previousDrawNum))
+WinningNumbers.write(str("\n"))
+WinningNumbers.write(str("\n"))
+WinningNumbers.write(str("Previous Chosen Numbers:"))
+WinningNumbers.write(str("\n"))
+WinningNumbers.write(oldNumbers)
+WinningNumbers.write(str("\n"))
+WinningNumbers.write(str("\n"))
+WinningNumbers.write(str(f"{todayDateLabel} Output: "))
+WinningNumbers.write(str("\n"))
 WinningNumbers.write(str(finalNum))
 WinningNumbers.close()
+
+print(str("calculations complete"))
